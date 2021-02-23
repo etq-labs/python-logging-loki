@@ -78,6 +78,9 @@ class LokiHandler(logging.Handler):
         """Send log record to Loki."""
         # noinspection PyBroadException
         try:
+            print("ICI")
+            print(record)
+            print(self.format(record))
             self.emitter(record, self.format(record))
         except Exception:
             self.handleError(record)

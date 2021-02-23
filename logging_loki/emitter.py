@@ -53,9 +53,14 @@ class LokiEmitter(abc.ABC):
     def __call__(self, record: logging.LogRecord, line: str):
         """Send log record to Loki."""
         payload = self.build_payload(record, line)
+        print("KKKKIIIIKKK")
+        print(payload)
+        print(self.url)
         resp = self.session.post(self.url, json=payload)
         if resp.status_code != self.success_response_code:
-            raise ValueError("Unexpected Loki API response status code: {0}".format(resp.status_code))
+            raise ValueError(
+                "Unexpected Loki API response status code: {0}".format(resp.status_code)
+            )
 
     @abc.abstractmethod
     def build_payload(self, record: logging.LogRecord, line) -> dict:
