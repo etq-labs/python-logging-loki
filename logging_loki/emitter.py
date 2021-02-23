@@ -53,7 +53,7 @@ class LokiEmitter(abc.ABC):
     def __call__(self, record: logging.LogRecord, line: str):
         """Send log record to Loki."""
         payload = self.build_payload(record, line)
-        print("KKKKIIIIKKK")
+        print("KKKKIIIIKKKKK")
         print(payload)
         print(self.url)
         resp = self.session.post(self.url, json=payload)
